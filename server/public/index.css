@@ -1,0 +1,183 @@
+body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    height: 100vh;
+    justify-content: center;
+    margin: 0;
+    /* background-color: rgb(171, 192, 167); */
+    color: white;
+    
+  }
+
+  a{
+    text-decoration: none;
+    color: red;
+  }
+  
+  header,
+  section {
+    padding: 0;
+  }
+  
+  header {
+    background-color: #333;
+    color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  section {
+    background-image: url("./nrd-7vvNhFSBW2Y-unsplash.jpg");
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .front{
+    margin-top: 100px;
+  }
+
+  h1{
+    font-size: 3rem;
+    margin-bottom: 100px;
+    width: 110%;
+    text-align: center;
+  }
+  h3{
+    padding: 20px;
+  }
+  .skew-title {
+    background-color:rgba(255, 255, 255, 0.911);
+    color: rgb(48, 52, 53);
+    opacity: 0;
+    pointer-events: none;
+    /* font-size: 0.75rem; */
+    padding: 3rem;
+    margin-left: 30%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 32%;
+    z-index: 10;
+    transform: skew(-15deg, 0);
+    transition: all 0.6s ease-in-out;
+    display:flex;
+    flex-direction: column;
+    /* justify-content:space-evenly; */
+  }
+
+  section:hover .skew-title {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .skew-title > div {
+    transform: skew(15deg, 0);
+  }
+  .skew-title h2 {
+    text-transform: uppercase;
+  }
+  
+  .skew-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .skew-image > div {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+  }
+  .skew-image > div:nth-of-type(1) {
+    animation-name: skewShift1;
+    left: 0;
+    width: 15rem;
+  }
+  .skew-image > div:nth-of-type(1):before {
+    animation-name: skewBgShift1;
+    -webkit-filter: blur(2px);
+  }
+  .skew-image > div:nth-of-type(2) {
+    animation-name: skewShift2;
+    right: -15rem;
+    width: 15rem;
+  }
+  .skew-image > div:nth-of-type(2):before {
+    margin-left: -100vw;
+    animation-name: skewBgShift2;
+    -webkit-filter: blur(5px) grayscale(100%) contrast(125%);
+  }
+  
+  .skew-image > div:before {
+    background-image: url("./nrd-7vvNhFSBW2Y-unsplash.jpg");
+    background-position: center center;
+    background-size: cover;
+    content: "";
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+  }
+  
+  @-webkit-keyframes skewShift1 {
+    0% {
+      transform: translate3d(0, 0, 0) skew(15deg, 0);
+    }
+    50% {
+      transform: translate3d(40rem, 0, 0) skew(15deg, 0);
+      width: 30rem;
+    }
+    100% {
+      transform: translate3d(0, 0, 0) skew(15deg, 0);
+    }
+  }
+  @-webkit-keyframes skewBgShift1 {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1.25) skew(-15deg, 0);
+    }
+    50% {
+      transform: translate3d(-40rem, 0, 0) scale(1.25) skew(-15deg, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) scale(1.25) skew(-15deg, 0);
+    }
+  }
+  @-webkit-keyframes skewShift2 {
+    0% {
+      transform: translate3d(0, 0, 0) skew(-15deg, 0);
+    }
+    50% {
+      transform: translate3d(-60rem, 0, 0) skew(-15deg, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) skew(-15deg, 0);
+    }
+  }
+  @-webkit-keyframes skewBgShift2 {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1.25) skew(15deg, 0);
+    }
+    50% {
+      transform: translate3d(60rem, 0, 0) scale(1.25) skew(15deg, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) scale(1.25) skew(15deg, 0);
+    }
+  }

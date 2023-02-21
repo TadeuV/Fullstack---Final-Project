@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+nav{
+    height: 110px;
+    box-sizing: border-box;
+    display: flex;
+    .container{
+        font-family: 'Open Sans', sans-serif;
+        // background-color: white;
+        height: 100%;
+        
+        width: 80vw;
+        display: flex;
+        align-items: center;
+        
+        font-size: 3rem;
+        font-weight: 700;
+        color:white;
+        letter-spacing: 1.6px;
+        img{
+            height: 100px;
+            width: 100px;
+        }
+    }
+    .control{
+        height: 100%;
+        // background-color: white;
+        width: 20vw; 
+    }
+}

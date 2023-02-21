@@ -1,0 +1,231 @@
+$animationDuration: 30s;
+
+// body {
+//   line-height: 1.25;
+//   width: 100%;
+// }
+
+
+.section {
+  background-image: url("../assets/nrd-7vvNhFSBW2Y-unsplash.jpg");
+  background-position: center center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  transition: all .2s ease-in-out;
+
+  &:hover{
+    // opacity: 50%;
+  }
+
+  .accesscontainer{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 30;
+
+   
+    &:hover{
+     
+    }
+
+    .signupcontainer{
+      z-index: 50;
+      height: 600px;
+      width: 500px;
+      background-color: aliceblue;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      box-sizing: border-box;
+      
+      .signupform{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        box-sizing: border-box;
+        
+        a{
+          letter-spacing: .8px;
+          font-weight: 500;
+          color: #0b85d6;
+          text-decoration: none;
+        }
+
+        &:hover{
+         
+        }
+
+        .forgot-pass{
+          display:none;
+        }
+
+        .titlebox{
+          height: 60px;
+          width: 100%;
+          box-sizing: border-box;
+          display: flex;
+          justify-content: center;
+            div{
+              font-size: 34px;
+              font-weight: 600;
+              text-align: center;
+             
+            }
+
+            .close{
+              display: flex;
+              align-self:flex-start;
+              justify-self: flex-end;
+              position: relative;
+              right:-110px;
+              top: 0px;
+              font-size: 25px;
+              cursor: pointer;
+            }
+        }
+        .data{
+          height: 45px;
+          width: 410px;
+          margin: 30px 0;
+
+          input{
+            height: 100%;
+            width: 100%;
+            padding-left: 10px;
+            font-size: 17px;
+            border: 1px solid silver;
+          }
+
+          label{
+            display: flex;
+            justify-self: flex-start;
+            width: 50%;
+            text-align: start;
+            font-size: 18px;
+            margin-bottom: 15px;
+          }
+        }
+        .btnwrapper{
+          margin-top: 20px;
+          width: 400px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          .error{
+            margin: 8px;
+            width: 100%;
+            color:red;
+            // border: 1px solid red;
+            // background-color: rgba(255, 205, 205, 0.5);
+          }
+
+          button{
+            border-radius: 10px;
+            height: 50px;
+            width: 150px;
+            background: -webkit-linear-gradient(right, #56d8e4, #9f01ea);
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+          }
+
+          
+        }
+
+      }
+
+    }
+  }
+
+  
+}
+
+.skew-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+}
+.skew-image > div {
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  animation-duration: $animationDuration;
+  animation-iteration-count: infinite;
+  
+  &:nth-of-type(1) {
+    animation-name: skewShift1;
+    left: 0;
+    width: 15rem;
+    &:before {
+      animation-name: skewBgShift1;
+      -webkit-filter: blur(2px);
+    }
+  }
+  &:nth-of-type(2) {
+    animation-name: skewShift2;
+    right: -15rem;
+    width: 15rem;
+    &:before {
+      margin-left: -100vw;
+      animation-name: skewBgShift2;
+      -webkit-filter: blur(5px) grayscale(100%) contrast(125%);
+    }
+  }
+  
+
+}
+.skew-image > div:before {
+  background-image: url("../assets/nrd-7vvNhFSBW2Y-unsplash.jpg");
+  background-position: center center;
+  background-size: cover;
+  content: '';
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  animation-duration: $animationDuration;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes skewShift1 {
+  0%   { transform: translate3d(0,0,0)     skew(15deg,0); }
+  50%  { transform: translate3d(40rem,0,0) skew(15deg,0); width: 30rem; }
+  100% { transform: translate3d(0,0,0)     skew(15deg,0); }
+}
+@-webkit-keyframes skewBgShift1 {
+  0%   { transform: translate3d(0,0,0)      scale(1.25) skew(-15deg,0); }
+  50%  { transform: translate3d(-40rem,0,0) scale(1.25) skew(-15deg,0); }
+  100% { transform: translate3d(0,0,0)      scale(1.25) skew(-15deg,0); }
+}
+@-webkit-keyframes skewShift2 {
+  0%   { transform: translate3d(0,0,0)      skew(-15deg,0); }
+  50%  { transform: translate3d(-60rem,0,0) skew(-15deg,0); }
+  100% { transform: translate3d(0,0,0)      skew(-15deg,0); }
+}
+@-webkit-keyframes skewBgShift2 {
+  0%   { transform: translate3d(0,0,0)      scale(1.25) skew(15deg,0); }
+  50%  { transform: translate3d(60rem,0,0)  scale(1.25) skew(15deg,0); }
+  100% { transform: translate3d(0,0,0)      scale(1.25) skew(15deg,0); }
+}

@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+body{
+    color:white;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    font-weight: 900;
+    /* height: 100vh; */
+} 
+
+.txt{
+    align-self: flex-end;
+    position: absolute;
+    bottom: 100px;
+    right: 50px;
+}
+
+.txt404{
+    color: transparent;
+    font-size: 4em;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
+}
+
+html{
+    background-image: url(https://www.viasat.com/content/dam/us-site/government/images/1245270_Space_Domain_Hero_003.jpg) ;
+    background-repeat: no-repeat; 
+    background-size: cover;
+    height: 100hv;
+    width: 100vw;
+}
+
+
+.amogus {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    animation: eject 7s infinite linear;
+}
+
+@keyframes eject {
+    0% {
+      transform: translate3d(-50vmin, -20vmin, 0px) rotate(0turn);
+    }
+
+    50%, 100% {
+      transform: translate3d(100vw, -20vmin, 0px) rotate(-2turn);
+    }
+}
+  
+
+
+  
+  
