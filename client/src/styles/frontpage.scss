@@ -30,19 +30,22 @@ body{
         margin-top: 20px;
         margin-bottom: 30px;
         max-height: 50px;
-        width: 32vw;
+        width: 280px;
         font-size: 1.4rem;
         display: flex;
         align-self: flex-start;
         color: white;
-        box-shadow: 10px 10px 10px rgb(55, 159, 177);
+        // box-shadow: 10px 10px 10px rgb(55, 159, 177);
+        border-bottom: 1px solid rgb(0, 217, 255);
+        // background-color: rgb(55, 159, 177);
+        text-transform:capitalize;
     }
 
     .statsbar{
-        
+        align-self: flex-end;
         display: flex;
-        height: 110px;
-        width: 90%;
+        height: 100px;
+        width: 100%;
         align-content: center;
         font-weight: 700;
         font-size: 1.2rem;
@@ -98,6 +101,7 @@ body{
 
                 div{
                     color: white;
+                    font-size: .9em;
                 }
 
                 .add:active {
@@ -109,8 +113,8 @@ body{
                     cursor: pointer;
                 }
                 .add{
-                    height: 40px;
-                    width: 60px;
+                    height: 35px;
+                    width: 52px;
                     border-radius: 5px;
                     text-decoration: none;
                     // border: 1px solid;
@@ -119,7 +123,7 @@ body{
                     align-items: center;
                     // background-color: rgb(255, 255, 255);
                     color: rgb(136, 255, 0);
-                    font-size: 1.2rem;
+                    font-size: 1.1rem;
                     font-weight: 600;
                 }
             }
@@ -133,13 +137,14 @@ body{
 
                 div{
                     color: white;
+                    font-size: .9em;
                 }
                 .logout{
                     color: rgb(255, 0, 0);
                     font-size: 1rem;
                     text-decoration: none;
                     // color:white;
-                    height: 40px;
+                    height: 35px;
                     width: 100px;
                     border-radius: 5px;
                     text-decoration: none;
@@ -154,13 +159,13 @@ body{
     }
 
     table{
-        width: 80vw;
+        min-width: 85vw;
         border: 2px gray double;
         text-align: center;
         border-collapse: collapse;
         background-color: white;
         margin-bottom: 20px;
-
+        overflow-x:scroll;
         th{
             border: 1px gray solid;
             background-color: rgb(35, 43, 114);
@@ -171,7 +176,7 @@ body{
         td{
             border: 1px gray solid;
             color:rgb(53, 53, 53);
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
         tr:nth-child(even){
             background-color: rgb(220, 230, 245);
@@ -205,4 +210,105 @@ body{
         justify-content: center;
         align-items: center;
     }
+}
+
+@media screen and (max-width: 1100px) {
+    body{
+        margin-top: 10px;
+        font-size: 0.9rem;
+        h1{
+            
+            font-size: 2.7rem; 
+        }
+        .statsbar{
+            font-size: 1rem;
+            .totalitems{
+                font-size: 1rem;
+            }
+
+            .statswrapper{
+                font-size: 1.3rem;
+            }
+        }
+        table{
+
+            th{
+                font-size: 1.1rem;
+            }
+            td{
+                font-size: .9rem;
+            }
+        }
+    }
+  }
+  @media screen and (max-width: 900px) {
+    body{
+        .statsbar{
+            height:70px ;
+            font-size: .9em;
+            align-self: center;
+            .add{
+                height: 20px;
+                width: 40px;
+            }
+            .logout{
+
+            }   
+        }
+        .tablecontainer{
+            align-self: center;
+            overflow-x:scroll;
+            table{
+                thead{
+                    tr{
+                        overflow-x:scroll;
+                        th{
+                            position: sticky;
+                        }
+                    }
+                }
+                tbody{
+                    tr{
+                        overflow-x:scroll;
+                    }
+                }
+                
+            }
+        }
+      
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    body{
+        .userbar{
+           margin-left: 50px;   
+        }
+        .statsbar{
+            width: 90vw;
+        }
+        .tablecontainer{
+            overflow-x:auto;
+            table{
+                overflow-x:auto;
+                thead{
+                    tr{
+                        overflow-x:auto;
+                        th{
+                            position: sticky;
+                        }
+                    }
+                }
+                tbody{
+                    tr{
+                        overflow-x:auto;
+                    }
+                }
+                
+            }
+        }
+      
+    }
+
 }

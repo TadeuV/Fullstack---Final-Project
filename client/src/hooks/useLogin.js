@@ -18,7 +18,7 @@ export const useLogin = () =>{
         Axios.defaults.baseURL='http://localhost:8020'
 
         Axios.post('user/login',{email,password},{headers:{'Content-Type':'application/json'}}).then((response)=>{
-            console.log(response)
+            // console.log(response)
             localStorage.setItem('user',JSON.stringify(response.data))
             // update auth context
             dispatch({type:'LOGIN',payload:response.data})

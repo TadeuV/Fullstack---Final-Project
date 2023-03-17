@@ -27,7 +27,7 @@ $animationDuration: 30s;
     justify-content: center;
     align-items: center;
     z-index: 30;
-   
+    
     
 
     .logincontainer{
@@ -139,7 +139,6 @@ $animationDuration: 30s;
 
     }
 
-    .signupcontainer{}
   }
 
   
@@ -218,4 +217,53 @@ $animationDuration: 30s;
   100% { transform: translate3d(0,0,0)      scale(1.25) skew(15deg,0); }
 }
 
+@media screen and (max-width: 700px) {
 
+  .section {
+    
+    .accesscontainer{
+      
+      .logincontainer{
+        
+        height: 500px;
+        width: 400px;
+        
+        .loginform{
+          .logintitlebox{
+              div{
+                font-size: 30px;
+              }
+              .close{
+                right:-90px;
+                top: -2px;
+       
+              }
+          }
+
+          .data{
+            height: 35px;
+            width: 310px;
+  
+          }
+
+          .btnwrapper{
+            width: 400px;
+      
+            button{
+              border-radius: 10px;
+              height: 50px;
+              width: 120px;
+              font-size: 15px;
+             
+            }
+          }
+          .signup-link{
+            font-size: larger;
+          }
+        }
+      } 
+      
+    }
+  }
+
+}

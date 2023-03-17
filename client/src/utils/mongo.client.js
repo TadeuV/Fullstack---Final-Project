@@ -6,6 +6,8 @@ export const grocery = await app.logIn(credentials);
 
 const mongo = app.currentUser.mongoClient("mongodb-atlas")
 export const collection = mongo.db("FullStack-GrocerApp").collection("grocerapp-col")
+export const groceryHistoryCollection = mongo.db("FullStack-GrocerApp").collection("grocerapp-history-col")
+
 
 
 // export async function loginCredentials(email,password){

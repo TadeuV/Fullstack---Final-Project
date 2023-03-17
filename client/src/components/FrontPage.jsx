@@ -8,6 +8,8 @@ import {useNavigate} from "react-router-dom"
 import Form from "./Form"
 import {useLogout} from '../hooks/useLogout'
 import {useAuthContext} from '../hooks/useAuthContext'
+import GroceryHistory from './GroceryHistory'
+
 
 
 
@@ -20,6 +22,8 @@ export default function FrontPage(){
     const [editingId, setEditingId] = useState();
     const {logout}=useLogout();
     const {user}=useAuthContext();
+  
+    
     const navigate=useNavigate();
 
     const localUser = JSON.parse(localStorage.getItem('user'))
@@ -31,9 +35,7 @@ export default function FrontPage(){
         
           const allGrocery = await grocery.functions.getAllGroceries()
           setGroceries(allGrocery)
-          // console.log(allGrocery[5].stringId === localUser.stringId)
-   
-    
+         
           // real sync function watching for updates
           for await (const change of collection.watch()){
 
@@ -46,12 +48,13 @@ export default function FrontPage(){
                   const groceryId = new BSON.ObjectID(item._id).toString()
                   const updatedGroceryId = new BSON.ObjectID(change.fullDocument._id).toString()
                   
-                  // triple equality does not work on objects
+                  
                   if(groceryId === updatedGroceryId){
                     const updatedGroceryData = change.updateDescription.updatedFields
                     return { ...item, ...updatedGroceryData}
                   }
-    
+
+
                   return item;
                 })
               })
@@ -76,8 +79,15 @@ export default function FrontPage(){
 
 
     const handleCheck = async (id) => {
+      const date = new Date();
+      const dateCon = date.toLocaleString('default',{date:'short'});
       const singleGrocery = await grocery.functions.getSingleGrocery(id)
-      console.log(id)
+      const historyInsert = await grocery.functions.insertHistory(singleGrocery.item,singleGrocery.type,singleGrocery.brand,singleGrocery.quantity,singleGrocery.observation,singleGrocery.stringId,dateCon)
+      const deletedGrocery = await grocery.functions.deleteGrocery(id)
+      setGroceryValue(deletedGrocery.deletedCount)
+      let checkbox = document.getElementById("checkId")
+      checkbox.uncheck
+        
     }
 
     const handleLogout = () =>{
@@ -98,12 +108,15 @@ export default function FrontPage(){
     return(
         <>  
               <h1>Grocery List </h1>
-              {user ? <div className="userbar">Welcome {user.email}</div> :""}
+              {user ? <div className="userbar">Welcome { user.username}</div> :""}
               {/* // <div className="userbar">Welcome {user.email}</div> */}
               <div className="statsbar">
                 <div className="statswrapper">
                   <div className="totalitems">
-                  {Object.keys(groceries).length >1 ?  (Object.keys(groceries).length+" items"):" item"} 
+
+                    { (groceries.filter(each => (each.stringId === localUser.stringId)? true : false).length) +(
+                      ((groceries.filter(each => (each.stringId === localUser.stringId)? true : false).length) >1)? " items" : " item")}
+
                   </div>
                   <div className="something"></div>
                 </div>
@@ -118,12 +131,13 @@ export default function FrontPage(){
                   </div>
                 </div>
               </div>
+              <div className="tablecontainer">
               <table>
                   <thead>
                       <tr>
                           <th>Item</th>
-                          <th>Type</th>
-                          <th>Brand</th>
+                          <th className="tcolumn">Type</th>
+                          <th className="tcolumn">Brand</th>
                           <th>Quantity</th>
                           <th>Observation</th>
                           <th>Edit</th>
@@ -132,13 +146,14 @@ export default function FrontPage(){
                       </tr>
                   </thead>
                   <tbody>
+                   
                       {(Object.keys(groceries).length) > 0 ? (groceries.map(each=>
                         
                       ((each.stringId === localUser.stringId) ? (
                           <tr key={each._id}>
                               <td>{each.item}</td>
-                              <td>{each.type}</td>
-                              <td>{each.brand}</td>
+                              <td className="tcolumn">{each.type}</td>
+                              <td className="tcolumn">{each.brand}</td>
                               <td>{each.quantity}</td>
                               <td>{each.observation}</td>
                               <td><FontAwesomeIcon icon={faPencil} onClick={() => {
@@ -147,31 +162,16 @@ export default function FrontPage(){
                                   setEditingId(each._id);
                                   }} className="updatebutton"></FontAwesomeIcon></td>
                               <td><FontAwesomeIcon icon={faTrashCan} onClick={() => handleDelete(each._id)} className="deletebutton"></FontAwesomeIcon></td>
-                              <td><input type="checkbox" onClick={()=>{handleCheck(each._id)}}></input></td>
+                              <td><input type="checkbox" id="checkId" onClick={()=>{handleCheck(each._id)} }></input></td>
                           </tr>
                       ):<tr className="emptylist"></tr>))):<tr className="emptylist"></tr>
-                      // (
-                      //     <tr key={each._id}>
-                      //         <td>{localUser.stringId +"/"+ each.stringId}</td>
-                      //         <td>{each.item}</td>
-                      //         <td>{each.type}</td>
-                      //         <td>{each.brand}</td>
-                      //         <td>{each.quantity}</td>
-                      //         <td>{each.observation}</td>
-                      //         <td><FontAwesomeIcon icon={faPencil} onClick={() => {
-                      //             toggleModal();
-                      //             setIsEdit(true);
-                      //             setEditingId(each._id);
-                      //             }} className="updatebutton"></FontAwesomeIcon></td>
-                      //         <td><FontAwesomeIcon icon={faTrashCan} onClick={() => handleDelete(each._id)} className="deletebutton"></FontAwesomeIcon></td>
-                      //         <td><input type="checkbox" onClick={()=>{handleCheck(each._id)}}></input></td>
-                      //     </tr>
-                      // ))):<tr className="emptylist">{"The Grocery list is empty"}</tr>
                      
                       }
                   </tbody>
               </table>
+              </div>
               {formWindow &&(<Form isOpen={formWindow} isEdit={isEdit} closeForm={closeFormWindow} setGroceryValue={setGroceryValue} editingId={editingId}></Form>)}
+              <GroceryHistory></GroceryHistory>
         </>
 
     )

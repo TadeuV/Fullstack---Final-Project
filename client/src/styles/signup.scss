@@ -229,3 +229,54 @@ $animationDuration: 30s;
   50%  { transform: translate3d(60rem,0,0)  scale(1.25) skew(15deg,0); }
   100% { transform: translate3d(0,0,0)      scale(1.25) skew(15deg,0); }
 }
+
+@media screen and (max-width: 700px) {
+
+  .section {
+    
+    .accesscontainer{
+      
+      .signupcontainer{
+        
+        height: 500px;
+        width: 400px;
+        
+        .signupform{
+          .titlebox{
+              div{
+                font-size: 30px;
+              }
+              .close{
+                right:-75px;
+                top: 2px;
+       
+              }
+          }
+
+          .data{
+            height: 35px;
+            width: 310px;
+            margin:20px
+          }
+
+          .btnwrapper{
+            width: 400px;
+      
+            button{
+              border-radius: 10px;
+              height: 50px;
+              width: 120px;
+              font-size: 15px;
+             
+            }
+          }
+          .signup-link{
+            font-size: larger;
+          }
+        }
+      } 
+      
+    }
+  }
+
+}
