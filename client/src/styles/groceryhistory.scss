@@ -6,6 +6,9 @@
     background-color:rgb(86, 93, 95);
     font-family: 'Open Sans', sans-serif;
     border-radius: 5px;
+    align-self: center;
+    justify-content: center;
+    
     .historytitle{
         margin-bottom: 30px;
         display: flex;
@@ -18,9 +21,9 @@
 
     .historycontainer{
         box-sizing: border-box;
-        // border:1px solid green;
+        
         padding: 20px;
-        max-height: 500px;
+        max-height: 800px;
         overflow-y: scroll;
         .historynotfound{
             color:white;
@@ -128,9 +131,9 @@
 @media screen and (max-width: 800px) {
     
     .historywrapper{
-        width: 95%;
+        
         margin-top: 50px;
-        align-self: center;
+        // align-self: center;
 
         .historytitle{
             margin-bottom: 15px;

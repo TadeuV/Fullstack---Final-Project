@@ -15,7 +15,7 @@ export const useLogin = () =>{
         // 1- install CORS and stablish a connection
         // 2- use a proxy at the json file with the backend endpoint
 
-        Axios.defaults.baseURL='http://localhost:8020'
+        Axios.defaults.baseURL='https://grocerapp-server.vercel.app'
 
         Axios.post('user/login',{email,password},{headers:{'Content-Type':'application/json'}}).then((response)=>{
             // console.log(response)
